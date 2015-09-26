@@ -1,0 +1,21 @@
+Infix Notation           RPN Notation
+=====================================
+A+B+C                    AB+C+    
+A-B-C                    AB-C-    
+A+B*C                    ABC*+    
+W+X-Y+Z                  WX+Y-Z+  
+W+X*Y-Z                  WXY*+Z-  
+A*B-C                    AB*C-    
+A/B*C                    AB/C*    
+A*B-C/D                  AB*CD/-  
+K/G/Z                    KG/Z/    
+Q/S-D                    QS/D-    
+P*D/E*K                  PD*E/K*  
+A+B*C/D-E                ABC*D/+E-
+A*B-C+D/E                AB*C-DE/+
+A+(B*(C-D)/E)            ABCD-*E/+
+A*(B+C)                  ABC+*    
+A-(B+C)                  ABC+-    
+A*((B*C)-D)              ABC*D-*  
+(A+(B-C))/D              ABC-+D/  
+A-B/(C+D)*E              ABCD+/E*-

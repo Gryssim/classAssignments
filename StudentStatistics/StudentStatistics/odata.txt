@@ -1,0 +1,35 @@
+================================================================================
+First Name     Last Name      Test1  Test2  Test3  Test4  Average   Grade
+================================================================================
+Johnny         Lang            100    92   100    98       97.50       A
+Douglas        Plock           100    98    89    95       95.50       A
+Jason          Olson           100    95    92    90       94.25       A
+Tom            Jerry            85    90    97    98       92.50       A
+Hillary        Clinton          90    91    93    95       92.25       A
+Billie         Jeans           100    92    83    85       90.00       A
+Lucy           Plock            98    76    86    99       89.75       B
+Lacy           Lee              70    90    95    92       86.75       B
+Suzie          Wang             95    85    75    80       83.75       B
+Henry          Miller           75    85    82    90       83.00       B
+Robert         Scherlitz        86    88    82    76       83.00       B
+Allie          Smith            85    85    80    82       83.00       B
+Curtis         Heuschkel        98    55    66    97       79.00       C
+Alice          Wood             44    75    88    99       76.50       C
+Austin         Jones            65    75    77    80       74.25       C
+Sally          Railey           65    70    75    78       72.00       C
+Victoria       Olsen            55    62    73    82       68.00       D
+Bill           Kool             65    75    65    66       67.75       D
+Brandon        Breiner          55    32    85    90       65.50       D
+Dianne         Ames             60    55    72    56       60.75       D
+George         Michael           0   100   100     0       50.00       F
+================================================================================
+Class Average:                  75.76 79.33 83.57 82.29 
+Class Max:                      100   100   100   99    
+Class Min:                      0     32    65    0     
+================================================================================
+Total As: 28.57%
+Total Bs: 28.57%
+Total Cs: 19.05%
+Total Ds: 19.05%
+Total Fs:  4.76%
+================================================================================

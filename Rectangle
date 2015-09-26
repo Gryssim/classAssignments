@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	double length;
+	double width;
+	double area;
+	double perimeter;
+	// Dimension request.
+	cout << "Please enter the length of your rectangle: " << endl;
+	cin >> length;
+	cout << "Please enter the width of your rectangle: " << endl;
+	cin >> width;
+	// Dimension calculation.
+	perimeter = 2 *  (length + width);
+	area = length * width;
+	
+	cout << "Length = " << length << endl;
+	cout << "Width = " << width << endl;
+	cout << "Area = " << area << endl;
+	cout << "Perimeter = " << perimeter << endl;
+	return 0;
+	}

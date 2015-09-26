@@ -1,0 +1,47 @@
+=======================================================================================
+|             Course            Credit    Number of       Student Credit              |
+| CRN       Description         Hours     Students            Hours          Professor|
+=======================================================================================
+| 12836     Algebra               4          40                160           Boole    |
+| 21780     Trigonometry          3          33                 99           Euler    |
+| 52266     Algebra               4          44                176           Hughes   |
+| 35628     Precalculus           5          27                135           Jones    |
+| 41805     Geometry              5          35                175           Pyth     |
+| 11434     Algebra               3          27                 81           Boole    |
+| 66886     Trigonometry          5          18                 90           Patton   |
+| 78799     Calculus              3           4                 12           Newton   |
+| 22531     Geometry              3          11                 33           DesCartes|
+| 61443     Algebra               4          35                140           Pascal   |
+| 89984     Calculus              5          10                 50           Leibniz  |
+=======================================================================================
+                                            284               1151
+
+=======================================================================================
+|             Course            Credit    Number of       Student Credit              |
+| CRN       Description         Hours     Students            Hours          Professor|
+=======================================================================================
+| 52266     Algebra               4          44                176           Hughes   |
+| 41805     Geometry              5          35                175           Pyth     |
+| 12836     Algebra               4          40                160           Boole    |
+| 61443     Algebra               4          35                140           Pascal   |
+| 35628     Precalculus           5          27                135           Jones    |
+| 21780     Trigonometry          3          33                 99           Euler    |
+| 66886     Trigonometry          5          18                 90           Patton   |
+| 11434     Algebra               3          27                 81           Boole    |
+| 89984     Calculus              5          10                 50           Leibniz  |
+| 22531     Geometry              3          11                 33           DesCartes|
+| 78799     Calculus              3           4                 12           Newton   |
+=======================================================================================
+                                            284               1151
+
+There are, on average, 25.82 students per class.
+
+================================
+| Course         Students      |  
+================================
+| Algebra            146       |
+| Calculus            14       |
+| Geometry            46       |
+| Precalculus         27       |
+| Trigonometry        51       |
+================================
