@@ -1,3 +1,10 @@
+/*
+Douglas Plock
+CSCI 112
+Reverse Polish Notation
+*/
+
+
 #include <iostream>
 #include <iomanip>
 #include <string>
