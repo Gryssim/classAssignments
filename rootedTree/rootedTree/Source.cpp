@@ -13,6 +13,17 @@ struct treeType {
 	treeType *left, *right;
 };
 
+void toLower(string &word){
+	int i, ch;
+	for (i = 0; i < word.length(); i++){
+		if (word[i] >= 'A' && word[i] <= 'Z'){
+			ch = word[i];
+			ch += 32;
+			word[i] = ch;
+		}
+	}
+}
+
 void createTree(treeType *&root){
 	root = new treeType;
 	
@@ -28,7 +39,7 @@ bool emptyTree(treeType *root){
 	return root->count < INITVAL;
 }
 
-string cleanup(string word){
+void cleanup(string &word){
 	string dummy;
 	int i = 0;
 	dummy = "";
@@ -39,7 +50,6 @@ string cleanup(string word){
 		i++;
 	}
 	word = dummy;
-	return word;
 }
 
 
@@ -82,6 +92,7 @@ void readIn(treeType *root){
 
 	while (!inFile.eof()){
 		inFile >> word;
+		toLower(word);
 		cleanup(word);
 		insertTree(root, word);
 
