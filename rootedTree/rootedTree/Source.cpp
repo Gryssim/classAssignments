@@ -94,7 +94,7 @@ void readIn(treeType *root){
 		inFile >> word;
 		toLower(word);
 		cleanup(word);
-		insertTree(root, word);
+		if (word.length() >= 1) insertTree(root, word);
 
 	}
 }
