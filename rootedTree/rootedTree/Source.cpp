@@ -5,7 +5,9 @@
 
 using namespace std;
 
-const int INITVAL = 1;
+const int INITVAL = 0;
+const int ITEMPERLINE = 4;
+int itemCount = 0;
 
 struct treeType {
 	string word;
@@ -36,7 +38,7 @@ void createTree(treeType *&root){
 }
 
 bool emptyTree(treeType *root){
-	return root->count < INITVAL;
+	return root->count < 1;
 }
 
 void cleanup(string &word){
@@ -52,6 +54,35 @@ void cleanup(string &word){
 	word = dummy;
 }
 
+void printIt(treeType *c, ofstream &outFile){
+
+	int i;
+	bool isFirst = false;
+	if (itemCount == 0) isFirst = true;
+
+	if (isFirst){
+		for (i = 0; i < ITEMPERLINE; i++){
+			outFile << left << setw(14) << "Word" << setw(12) << "Count";
+		}
+		outFile << endl;
+		for (i = 0; i < 98; i++){
+			outFile << "=";
+		}
+		outFile << endl;
+		isFirst = false;
+	}
+
+	if (itemCount < 3){
+		outFile << left << setw(14) << c->word << setw(12) << c->count;
+		itemCount++;
+	}
+	else {
+		outFile << left << setw(14) << c->word << setw(12) << c->count;
+		itemCount = 0;
+		outFile << endl << endl;
+	}
+
+}
 
 void insertTree(treeType *root, string word){
 	treeType *knew, *parent, *c;
@@ -82,9 +113,11 @@ void insertTree(treeType *root, string word){
 				parent->right = knew;
 		}
 	}
-	else
+	else{
 		root->word = word;
-}
+		root->count++;
+	}
+}	
 
 void readIn(treeType *root){
 	ifstream inFile("input.dat");
@@ -94,35 +127,39 @@ void readIn(treeType *root){
 		inFile >> word;
 		toLower(word);
 		cleanup(word);
-		if (word.length() >= 1) insertTree(root, word);
+		if (word.length() > 0) insertTree(root, word);
 
 	}
 }
 
 
-void preOrderTrav(treeType *c){
+void preOrderTrav(treeType *c, ofstream &outFile){
 	cout << c->word;
-	if (c->left != NULL) preOrderTrav(c->left);
-	if (c->right != NULL) preOrderTrav(c->right);
+	printIt(c, outFile);
+	if (c->left != NULL) preOrderTrav(c->left, outFile);
+	if (c->right != NULL) preOrderTrav(c->right, outFile);
 }
 
-void inOrderTrav(treeType *c){
-	if (c->left != NULL) inOrderTrav(c->left);
+void inOrderTrav(treeType *c, ofstream &outFile){
+	if (c->left != NULL) inOrderTrav(c->left, outFile);
 	cout << c->word << " " << c->count << endl;
-	if (c->right != NULL) inOrderTrav(c->right);
+	printIt(c, outFile);
+	if (c->right != NULL) inOrderTrav(c->right, outFile);
 }
 
-void postOrderTrav(treeType *c){
-	if (c->left != NULL) postOrderTrav(c->left);
-	if (c->right != NULL) postOrderTrav(c->right);
+void postOrderTrav(treeType *c, ofstream &outFile){
+	if (c->left != NULL) postOrderTrav(c->left, outFile);
+	if (c->right != NULL) postOrderTrav(c->right, outFile);
 	cout << c->word;
+	printIt(c, outFile);
 }
 
 void main(){
+	ofstream outFile("output.txt");
 	treeType *root;
 
 	createTree(root);
 	readIn(root);
 
-	inOrderTrav(root);
+	inOrderTrav(root, outFile);
 }

@@ -1,0 +1,96 @@
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+a             4           all           1           and           4           are           1           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+as            1           assigned      1           asterisks     1           averages      1           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+back          1           beauty        1           became        1           become        1           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+been          1           bo            1           both          1           by            2           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+campaign      1           computerized  1           concerned     1           content       1           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+corporations  1           derek         1           during        1           each          1           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+easy          1           education     1           electorate    1           entrants      1           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+era           1           even          2           famous        1           felt          1           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+few           1           first         1           future        1           game          1           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+grade         1           had           1           happy         1           have          2           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+horse         2           in            3           is            3           issues        1           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+it            1           judge         2           known         1           made          1           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+main          1           many          1           measure       1           measuring     1           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+media         1           more          1           movie         1           movies        1           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+novels        1           number        2           observers     1           of            2           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+on            2           or            2           other         2           point         2           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+policies      1           politics      1           polls         1           presidential  1           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+quality       1           quantity      1           question      1           race          2           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+rating        1           ratings       2           rests         1           scale         1           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+seem          1           shows         1           some          1           stars         1           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+symbols       1           television    1           than          2           that          1           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+the           9           them          1           think         1           this          1           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+to            4           too           1           we            4           were          1           
+
+Word          Count       Word          Count       Word          Count       Word          Count       
+==================================================================================================
+who           1           winning       1           with          4           years         1           
+
