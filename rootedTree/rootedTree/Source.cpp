@@ -1,3 +1,8 @@
+/*
+Douglas Plock
+CSCI 112
+Binary Search Tree
+*/
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -153,6 +158,7 @@ void postOrderTrav(treeType *c, ofstream &outFile){
 	cout << c->word;
 	printIt(c, outFile);
 }
+
 
 void main(){
 	ofstream outFile("output.txt");
