@@ -6,14 +6,29 @@ Number of comparisons:      99980001 Number of copies: 71065107
 
 Relative # of comparisons:  9998.000 Relative # of copies: 7106.511
 
+Duration: 624.000 miliseconds
+
 
 Selection Sort   N = 10000
      -99981.632     -89414.739     -77902.338     -63188.777     -43597.553
      -13009.784      28169.266      56872.285      75588.950      89181.364
 
-Number of comparisons:      7776344 Number of copies: 149983254
+Number of comparisons:      49995000 Number of copies: 29967
 
-Relative # of comparisons:  777.634 Relative # of copies: 14998.325
+Relative # of comparisons:  4999.500 Relative # of copies: 2.997
+
+Duration: 95.000 miliseconds
+
+
+Insertion Sort   N = 10000
+     -99981.632     -89414.739     -77902.338     -63188.777     -43597.553
+     -13009.784      28169.266      56872.285      75588.950      89181.364
+
+Number of comparisons:      23698368 Number of copies: 23718366
+
+Relative # of comparisons:  2369.837 Relative # of copies: 2371.837
+
+Duration: 44.000 miliseconds
 
 
 Insertion Sort   N = 10000
@@ -24,14 +39,7 @@ Number of comparisons:      0 Number of copies: 0
 
 Relative # of comparisons:  0.000 Relative # of copies: 0.000
 
-
-Quick Sort   N = 10000
-        -44.142       3206.015      21819.922      63237.189      87965.285
-      97319.386      44160.611      58500.673      79633.045      66179.584
-
-Number of comparisons:      0 Number of copies: 0
-
-Relative # of comparisons:  0.000 Relative # of copies: 0.000
+Duration: 0.000 miliseconds
 
 
 Improved Bubble Sort   N = 10000
@@ -41,5 +49,7 @@ Improved Bubble Sort   N = 10000
 Number of comparisons:      99080091 Number of copies: 71065107
 
 Relative # of comparisons:  9908.009 Relative # of copies: 7106.511
+
+Duration: 618.000 miliseconds
 
 
