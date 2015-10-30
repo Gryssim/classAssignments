@@ -1,0 +1,20 @@
+Object has w = 1 l = 2
+Object has w = 2 l = 4
+
+Step 3A - Use new constructors with new variables and print
+
+the playClass1 object has : length = 6.235 width = 4.375
+the playClass1 object has : length = 12.725 width = 10
+
+Step 3B - Create new double var Area and print for 'x' and 'y'.
+
+'x' has area : 27.2781
+'y' has area : 127.25
+
+Step 3C- Change the dimensions of 'a' and print the area.
+
+'a' has area : 55.0045
+
+Step3D - Change the dimensons of 'b' and print the area.
+
+'b' has area : 105.765

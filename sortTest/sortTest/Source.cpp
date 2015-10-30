@@ -34,6 +34,8 @@ void swapIt(double &a, double &b){
 	temp = b;
 	b = a;
 	a = temp;
+
+	numMove += 3;
 }
 
 void bubbleSort(double a[]){
@@ -43,7 +45,6 @@ void bubbleSort(double a[]){
 			numCmp++;
 			if (a[i] > a[i + 1]){
 				swapIt(a[i], a[i + 1]);
-				numMove += 3;
 			}
 		}
 
@@ -63,7 +64,6 @@ void selectSort(double a[]){
 			}
 			if (k != small){
 				swapIt(a[k], a[small]);
-				numMove += 3;
 			}
 		}
 	}
@@ -91,7 +91,28 @@ void insertionSort(double a[]){
 }
 
 void quickSort(double a[], int left, int right){
+	int j, k;
 
+	if (left < right){
+		j = left;
+		k = right + 1;
+
+		do{
+			do{
+				j++;
+				numCmp++;
+			} while (j <= k && a[j] < a[left]);
+			do{
+				k--;
+				numCmp++;
+			} while (k >= left && a[k] > a[left]);
+			if (j < k) swapIt(a[j], a[k]);
+		} while (j < k);
+
+		swapIt(a[left], a[k]);
+		quickSort(a, left, k - 1);
+		quickSort(a, k + 1, right);
+	}
 }
 
 void improvedBubbleSort(double a[]){
@@ -104,7 +125,6 @@ void improvedBubbleSort(double a[]){
 		for (j = 0; j < MAXSIZE - 1; j++){
 			numCmp++;
 			if (a[j] > a[j + 1]){
-				numMove += 3;
 				sorted = false;
 				swapIt(a[j], a[j + 1]);
 			}
@@ -132,7 +152,7 @@ void printIt(ofstream &outFile, string name, double a[], double ms){
 
 	outFile << endl;
 	outFile << left << setw(28) << "Number of comparisons: " << numCmp
-		<< " " << "Number of copies: " << numMove << endl << endl;
+		<< " " << setw(22) << "Number of copies: " << numMove << endl << endl;
 
 	outFile << left << setw(28) << "Relative # of comparisons: "
 		<< 1.0 * numCmp / MAXSIZE << " " << "Relative # of copies: "
@@ -179,8 +199,9 @@ void main(){
 			start = clock();
 			quickSort(a, 0, MAXSIZE-1);
 			stop = clock();
-			break;
 			name = "Quick Sort";
+			break;
+
 		case(4) :
 			start = clock();
 			improvedBubbleSort(a);
