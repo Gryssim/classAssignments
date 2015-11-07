@@ -1,30 +1,15 @@
+/*
+Douglas Plock
+CSCI 112
+playClass
+*/
+
 #include <iostream>
 #include <fstream>
-#include <iostream>
 
 using namespace std;
 
-class playClass1{
-public:
-	double length, width;
-	playClass1();
-	playClass1(double l, double w);
-	void printIt(ofstream &outFile);
-};
-
-class playClass2{
-private:
-	double length, width;
-public:
-	void setLength(double l);
-	void setWidth(double w);
-	double getLength();
-	double getWidth();
-	void printIt(ofstream &outFile);
-	playClass2();
-	playClass2(double l, double w);
-
-};
+#include "playClass.h"
 
 void main(){
 	playClass1 a;
@@ -36,8 +21,8 @@ void main(){
 
 	outFile << endl;
 
-	//Step 3A - Use new constructors with new variables and print.
-	outFile << "Step 3A - Use new constructors with new variables and print" << endl << endl;
+	//Step 3A - Use new constructors to create objects x and y with parameters then print.
+	outFile << "Step 3A - Use new constructors to create objects x and y with parameters then print." << endl << endl;
 	playClass1 x(6.235, 4.375);
 	playClass2 y(12.725, 10.000);
 	x.printIt(outFile);
@@ -70,49 +55,4 @@ void main(){
 	b.setWidth(9.507);
 	area = b.getLength() * b.getWidth();
 	outFile << "'b' has area : " << area << endl;
-}
-
-playClass1::playClass1(){
-	length = 2.0;
-	width = 1.0;
-}
-
-playClass1::playClass1(double l, double w){
-	length = l;
-	width = w;
-}
-
-void playClass1::printIt(ofstream &outFile){
-	outFile << "the playClass1 object has : length = " << length << " width = " << width << endl;
-}
-
-playClass2::playClass2(){
-	length = 4.0;
-	width = 2.0;
-}
-
-playClass2::playClass2(double l, double w){
-	length = l;
-	width = w;
-}
-
-void playClass2::printIt(ofstream &outFile){
-	outFile << "the playClass1 object has : length = " << length << " width = " << width << endl;
-}
-
-
-double playClass2::getLength(){
-	return length;
-}
-
-double playClass2::getWidth(){
-	return width;
-}
-
-void playClass2::setLength(double l){
-	length = l;
-}
-
-void playClass2::setWidth(double w){
-	width = w;
 }

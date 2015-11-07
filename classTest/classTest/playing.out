@@ -1,7 +1,7 @@
 Object has w = 1 l = 2
 Object has w = 2 l = 4
 
-Step 3A - Use new constructors with new variables and print
+Step 3A - Use new constructors to create objects x and y then print
 
 the playClass1 object has : length = 6.235 width = 4.375
 the playClass1 object has : length = 12.725 width = 10

@@ -1,0 +1,84 @@
+Nominator = 0 Denominator = 1
+
+Nominator = 2 Denominator = 5
+
+STEP 1 - Set x to new rational number and multiply
+
+X:
+Nominator = 3 Denominator = 5
+
+Y:
+Nominator = 2 Denominator = 5
+
+Z:
+Nominator = 6 Denominator = 25
+
+STEP 2 - test divide operator with x and y.
+
+X:
+Nominator = 3 Denominator = 5
+
+Y:
+Nominator = 2 Denominator = 5
+
+Z:
+Nominator = 3 Denominator = 2
+
+STEP 4 - test addition and subtraction methods.
+
+Nominator = 3 Denominator = 5
+
+Nominator = 2 Denominator = 5
+
+1
+1/5
+STEP 5 - change values of x and y and test different denom ratNums.
+
+Nominator = 3 Denominator = 12
+
+Nominator = 9 Denominator = 23
+
+59/92
+-13/92
+
+STEP 6 - test reduceIt.
+
+59/92
+-13/92
+STEP 7 - test getMin.
+
+min -should- be 59.
+Min is: 59
+
+STEP 8 - Read in input file of rational pairs and output each pair.
+
+Rational Number a: 1/2           Rational Number b: 1/2
+
+a + b:   1
+a - b:   0
+a * b:   1/4
+a / b:   1
+Rational Number a: -5/3           Rational Number b: 2/3
+
+a + b:   -1
+a - b:   -7/3
+a * b:   -10/9
+a / b:   -5/2
+Rational Number a: -6/4           Rational Number b: 0
+
+a + b:   -3/2
+a - b:   -3/2
+a * b:   0
+a / b:   -9999
+Rational Number a: 12/23           Rational Number b: 3/5
+
+a + b:   129/115
+a - b:   -9/115
+a * b:   36/115
+a / b:   20/23
+Rational Number a: 1/5           Rational Number b: -2/10
+
+a + b:   0
+a - b:   2/5
+a * b:   -1/25
+a / b:   -1
