@@ -1,3 +1,9 @@
+/*
+Douglas Plock
+CSCI 112
+RationalNumber
+*/
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -91,6 +97,7 @@ void main(){
 
 	//STEP 8 - Read in input file of rational pairs and output each pair.
 	outFile << "STEP 8 - Read in input file of rational pairs and output each pair." << endl << endl;
+
 	ratNum a, b;
 	for (int i = 0; i < 5; i++){
 		inFile >> a >> b;

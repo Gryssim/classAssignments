@@ -1,0 +1,12 @@
+Step 3A - Create a queue container and read in data from file.
+
+Step 3B - Output the number of elements in q.
+q contains 6 elements.
+
+Step 3C - serve each element in the queue.
+Geography     245
+English       310
+Geophysics    782
+Mathematics   335
+Sociology     902
+Art           522

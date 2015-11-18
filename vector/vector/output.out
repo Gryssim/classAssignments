@@ -1,0 +1,8 @@
+Step 2A - Create a vector object and store data from file.
+
+Step 2B - output the vector.
+The elements in vector vect are: 35 25 95 85 14 105 66 75 95 5 
+
+Step 2C - Sort using an STL algorithm and output the sorted vector.
+The elements in vector vect are: 5 14 25 35 66 75 85 95 95 105 
+

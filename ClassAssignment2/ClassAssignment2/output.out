@@ -1,0 +1,35 @@
+Step 1A - set Integer and String values to test getMin
+x : 2 y : 4
+The smaller of the two is 2
+
+a : Henry b : James
+The smaller of the two is Henry
+
+Step 1B - Create instance of struct and test swap template on all values.
+x : 2 y : 4
+x : 4 y : 2
+a : Henry b : James
+a : James b : Henry
+i : 1234 Luke Skywalker  j : 2345 Han Solo
+i : 2345 Han Solo  j : 1234 Luke Skywalker
+
+Step 2A - Create a vector object and store data from file.
+
+Step 2B - output the vector.
+The elements in vector vect are: 35 25 95 85 14 105 66 75 95 5 
+
+Step 2C - Sort using an STL algorithm and output the sorted vector.
+The elements in vector vect are: 5 14 25 35 66 75 85 95 95 105 
+
+Step 3A - Create a queue container and read in data from file.
+
+Step 3B - Output the number of elements in q.
+q contains 6 elements.
+
+Step 3C - serve each element in the queue.
+Geography     245
+English       310
+Geophysics    782
+Mathematics   335
+Sociology     902
+Art           522

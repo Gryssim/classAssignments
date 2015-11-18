@@ -14,11 +14,7 @@ ratNum::ratNum(){
 }
 
 ratNum::ratNum(int inNom, int inDenom){
-	if (inDenom == 0){
-		nom = -9999;
-		denom = 1;
-	}
-	else {
+	if (inDenom != 0){
 		nom = inNom;
 		denom = inDenom;
 	}
@@ -33,10 +29,7 @@ void ratNum::setNom(int inNom){
 }
 
 void ratNum::setDenom(int inDenom){
-	if (inDenom == 0){
-		denom = -9999;
-	}
-	else{
+	if (inDenom != 0){
 		denom = inDenom;
 	}
 }
@@ -94,8 +87,7 @@ ratNum operator *(ratNum one, ratNum two){
 ratNum operator /(ratNum one, ratNum two){
 	ratNum ans;
 	if (two.nom == 0){
-		ans.nom = -9999;
-		ans.denom = 1;
+		return ans;
 	}
 	else {
 		ans.nom = one.nom * two.denom;

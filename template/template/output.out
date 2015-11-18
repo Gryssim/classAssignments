@@ -1,0 +1,15 @@
+Step 1A - set Integer and String values to test getMin
+x : 2 y : 4
+The smaller of the two is 2
+
+a : Henry b : James
+The smaller of the two is Henry
+
+Step 1B - Create instance of struct and test swap template on all values.
+x : 2 y : 4
+x : 4 y : 2
+a : Henry b : James
+a : James b : Henry
+i : 1234 Luke Skywalker  j : 2345 Han Solo
+i : 2345 Han Solo  j : 1234 Luke Skywalker
+
