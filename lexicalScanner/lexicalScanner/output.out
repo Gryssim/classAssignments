@@ -1,5 +1,5 @@
 
-Reserve Lise
+Reserve List
 and
 end
 for
@@ -47,3 +47,11 @@ Program 1
 23 if y >= x1 then x = y^3
 24 print x1, #
 25 end
+
+              letter         digit          period         delimiter      blank          pod            eoln           illegal        
+newTkn         1              1              5              1              6              5              6              7              
+resWrd         1              1              4              8              2              10             2              11             
+var            1              1              4              9              3              12             3              13             
+integer        9              1              1              9              3              4              3              13             
+real           9              1              4              9              3              4              3              13             
+delim          9              9              4              12             3              4              3              13             
