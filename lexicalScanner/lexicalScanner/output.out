@@ -14,6 +14,29 @@ rem
 step
 then
 to
+State Table
+
+                letter          digit         period      delimiter          blank            pod           eoln        illegal
+===============================================================================================================================
+newTkn         |resWrd         integer        newTkn         delim          newTkn         newTkn         newTkn         newTkn         
+resWrd         |resWrd         var            newTkn         delim          newTkn         newTkn         newTkn         newTkn         
+var            |var            var            newTkn         delim          newTkn         newTkn         newTkn         newTkn         
+integer        |resWrd         integer        real           delim          newTkn         newTkn         newTkn         newTkn         
+real           |resWrd         real           newTkn         delim          newTkn         newTkn         newTkn         newTkn         
+delim          |resWrd         integer        newTkn         newTkn         newTkn         newTkn         newTkn         newTkn         
+
+Action Table     
+
+              letter         digit          period         delimiter      blank          pod            eoln           illegal        
+==============================================================================================================================
+newTkn         |1              1              5              1              6              5              6              7              
+resWrd         |1              1              4              8              2              10             2              11             
+var            |1              1              4              9              3              12             3              13             
+integer        |9              1              1              9              3              4              3              13             
+real           |9              1              4              9              3              4              3              13             
+delim          |9              9              4              12             3              4              3              13             
+
+
 
 Explanations of Action Table Entries
 1 Load character and continue
@@ -47,11 +70,3 @@ Program 1
 23 if y >= x1 then x = y^3
 24 print x1, #
 25 end
-
-              letter         digit          period         delimiter      blank          pod            eoln           illegal        
-newTkn         1              1              5              1              6              5              6              7              
-resWrd         1              1              4              8              2              10             2              11             
-var            1              1              4              9              3              12             3              13             
-integer        9              1              1              9              3              4              3              13             
-real           9              1              4              9              3              4              3              13             
-delim          9              9              4              12             3              4              3              13             

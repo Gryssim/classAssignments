@@ -1,0 +1,6 @@
+resWrd   integer   newTkn   delim   newTkn   newTkn   newTkn   newTkn
+resWrd   var   newTkn   delim   newTkn   newTkn   newTkn newTkn
+var   var   newTkn   delim   newTkn   newTkn   newTkn   newTkn
+resWrd   integer   real   delim   newTkn   newTkn   newTkn   newTkn
+resWrd   real   newTkn   delim   newTkn   newTkn   newTkn   newTkn
+resWrd   integer   newTkn   newTkn   newTkn   newTkn   newTkn   newTkn

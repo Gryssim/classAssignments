@@ -12,6 +12,7 @@ const int explainSize = 13;
 enum stateType {newTkn, resWrd, var, integer, real, delim, lastState};
 enum charType {letter, digit, period, delimiter, blank, pod, eoln, illegal, lastCharType};
 
+
 stateType stringToState(string str){
 	stateType ans;
 	if (str == "newTkn")
@@ -100,6 +101,12 @@ string charTypeToString(charType ct){
 	return ans;
 }
 
+istream& operator >>(istream &inFile, stateType& one){
+	inFile >> one;
+
+	return inFile;
+}
+
 
 void swapIt(string &a, string &b){
 	string temp;
@@ -178,21 +185,65 @@ void readActionTable(int actionT[lastState][lastCharType]){
 
 void printActionTable(int actionT[lastState][lastCharType], ofstream &outFile){
 	stateType collumn;
-	
+
+	outFile << "Action Table" << endl;
 	outFile << left << "\n" << "              " << setw(15) << "letter" << setw(15) << "digit" << 
 		setw(15) << "period" << setw(15) << "delimiter" << setw(15) <<  "blank"
 		<< setw(15) << "pod" << setw(15) << "eoln" << setw(15) <<"illegal"  << endl;
+	for (int i = 0; i < 126; i++){
+		outFile << "=";
+	}
+	outFile << endl;
 
 	for (int i = newTkn; i < lastState; i++){
 		collumn = (stateType)i;
-		outFile << setw(15) << left << stateToString(collumn);
+		outFile << setw(15) << left << stateToString(collumn) << "|";
 		for (int j = letter; j < lastCharType; j++){
 			outFile << setw(15) << actionT[i][j];
 		}
 		outFile << endl << left <<  setw(17);
 	}
+	outFile << endl << endl  << setw(16);
 }
 
+void readStateTable(stateType FSM[lastState][lastCharType]){
+	ifstream inFile("state.dat");
+	string stateIn;
+
+	for (int i = newTkn; i < lastState; i++){
+		for (int j = letter; j < lastCharType; j++){
+			inFile >> stateIn;
+			FSM[i][j] = stringToState(stateIn);
+		}
+	}
+}
+
+void printStateTable(stateType FSM[lastState][lastCharType], ofstream &outFile){
+	stateType collumnTitle;
+	string stateOut;
+	
+	outFile << "State Table" << endl;
+	outFile  << "\n       "  << setw(15) << "letter" << setw(15) << "digit" <<
+		setw(15) << "period" << setw(15) << "delimiter" << setw(15) << "blank"
+		<< setw(15) << "pod" << setw(15) << "eoln" << setw(15) << "illegal" << endl;
+
+	for (int i = 0; i < 127; i++){
+		outFile << "=";
+	}
+	outFile << endl;
+
+
+	for (int i = newTkn; i < lastState; i++){
+		collumnTitle = (stateType)i;
+		outFile << setw(15) << left << stateToString(collumnTitle) << "|";
+		for (int j = letter; j < lastCharType; j++){
+			stateOut = stateToString(FSM[i][j]);
+			outFile << setw(15) << stateOut;
+		}
+		outFile << endl  << left << setw(17);
+	}
+	outFile << endl;
+}
 
 
 void main(){
@@ -206,11 +257,13 @@ void main(){
 
 	readReserveList(reserve);
 	printReserveList(reserve, outFile);
+	readStateTable(FSM);
+	printStateTable(FSM, outFile);
+	readActionTable(actionT);
+	printActionTable(actionT, outFile);
 	readExplain(exp);
 	printExplain(exp, outFile);
 	readProg(prog);
 	printProg(prog, outFile);
-	readActionTable(actionT);
-	printActionTable(actionT, outFile);
 
 }
