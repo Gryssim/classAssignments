@@ -101,12 +101,6 @@ string charTypeToString(charType ct){
 	return ans;
 }
 
-istream& operator >>(istream &inFile, stateType& one){
-	inFile >> one;
-
-	return inFile;
-}
-
 
 void swapIt(string &a, string &b){
 	string temp;
@@ -186,11 +180,17 @@ void readActionTable(int actionT[lastState][lastCharType]){
 void printActionTable(int actionT[lastState][lastCharType], ofstream &outFile){
 	stateType collumn;
 
-	outFile << "Action Table" << endl;
-	outFile << left << "\n" << "              " << setw(15) << "letter" << setw(15) << "digit" << 
+	outFile << "Action Table" << endl<< left << "\n" << "                ";
+	for (int j = 0; j < lastCharType; j++){
+		outFile << left << setw(15) << charTypeToString((charType)j);
+	}
+	outFile << endl;
+	
+	/*outFile << left << "\n" << "              " << setw(15) << "letter" << setw(15) << "digit" << 
 		setw(15) << "period" << setw(15) << "delimiter" << setw(15) <<  "blank"
 		<< setw(15) << "pod" << setw(15) << "eoln" << setw(15) <<"illegal"  << endl;
-	for (int i = 0; i < 126; i++){
+		*/
+	for (int i = 0; i < 127; i++){
 		outFile << "=";
 	}
 	outFile << endl;
@@ -223,10 +223,19 @@ void printStateTable(stateType FSM[lastState][lastCharType], ofstream &outFile){
 	string stateOut;
 	
 	outFile << "State Table" << endl;
+
+	outFile << "Action Table" << endl << left << "\n" << "                ";
+	for (int j = 0; j < lastCharType; j++){
+		outFile << left << setw(15) << charTypeToString((charType)j);
+	}
+
+	outFile << endl;
+	/*
 	outFile  << "\n       "  << setw(15) << "letter" << setw(15) << "digit" <<
 		setw(15) << "period" << setw(15) << "delimiter" << setw(15) << "blank"
 		<< setw(15) << "pod" << setw(15) << "eoln" << setw(15) << "illegal" << endl;
 
+		*/
 	for (int i = 0; i < 127; i++){
 		outFile << "=";
 	}
@@ -243,6 +252,140 @@ void printStateTable(stateType FSM[lastState][lastCharType], ofstream &outFile){
 		outFile << endl  << left << setw(17);
 	}
 	outFile << endl;
+}
+
+charType getCharType(char ch){
+	charType ans;
+	
+	if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))
+		ans = letter;
+	else if (ch >= '0' && ch <= '9')
+		ans = digit;
+	else if (ch == '.')
+		ans = period;
+	else if (ch == '"' || ch == ',' || ch == '+' || ch == '-' || ch == '/'
+		|| ch == '*' || ch == '>' || ch == '<' || ch == '#' || ch == '^'
+		|| ch == '=')
+		ans = delimiter;
+	else if (ch == ' ')
+		ans = blank;
+	else if (ch == '$' || ch == '%')
+		ans = pod;
+	else if (ch == '\n')
+		ans = eoln;
+	else
+		ans = illegal;
+	
+	return ans;
+}
+
+void doAction(int act, string &tkn, char ch, stateType &state, string reserve[], ofstream &outFile){
+	switch (act){
+	case 1:
+		tkn += ch;
+	case 2:
+		for (int i = 0; i < reserveSize; i++){
+			if (tkn == reserve[i]){
+				state = resWrd;
+				outFile << tkn << setw(10) << stateToString(state) << endl;
+				tkn = "";
+			}
+			else{
+				state = var;
+				outFile << tkn << setw(10) << stateToString(state) << endl;
+				tkn = "";
+			}
+		}
+	case 3:
+		outFile << tkn << endl;
+		tkn = "";
+	case 4:
+		outFile << tkn << setw(10) << "Improper usage." << setw(10) << ch << endl;
+		tkn = "";
+	case 5:
+		outFile << "Improper usage." << setw(10) << ch << endl;
+	case 6:
+
+	case 7:
+		outFile << "Illegal character." << setw(10) << ch << endl;
+	case 8:
+		for (int i = 0; i < reserveSize; i++){
+			if (tkn == reserve[i]){
+				state = resWrd;
+				outFile << tkn << setw(10) << stateToString(state) << endl;
+				tkn = "";
+				tkn += ch;
+			}
+			else{
+				state = var;
+				outFile << tkn << setw(10) << stateToString(state) << endl;
+				tkn = "";
+				tkn += ch;
+			}
+		}
+	case 9:
+		outFile << tkn << endl;
+		tkn = "";
+		tkn += ch;
+	case 10:
+		tkn += ch;
+		state = var;
+		outFile << tkn << endl;
+		tkn = "";
+	case 11:
+		for (int i = 0; i < reserveSize; i++){
+			if (tkn == reserve[i]){
+				state = resWrd;
+				outFile << tkn << setw(10) << stateToString(state) << endl;
+				tkn = "";
+			}
+			else{
+				state = var;
+				outFile << tkn << setw(10) << stateToString(state) << endl;
+				tkn = "";
+			}
+		}
+	case 12:
+		tkn += ch;
+		outFile << tkn << endl;
+		tkn = "";
+	case 13:
+		outFile << tkn << setw(10) << "Illegal character" << setw(10) << ch << endl;
+		tkn = "";
+	}
+}
+
+void scanner(int actionT[lastState][lastCharType], stateType FSM[lastState][lastCharType], string reserve[], ofstream &outFile){
+	ifstream inFile("prog1.bas");
+	stateType state = newTkn;
+	charType cct;
+	string tkn;
+	char ch;
+	int act;
+	
+	while (!inFile.eof()){
+
+		//Read in for each char in a row - read ch
+		inFile >> ch;
+
+		// char charType (cct) new function getCharType(ch)
+
+		cct = getCharType(ch);
+
+		//set action (act) based on state and cct act = actionT[state][cct]
+
+		act = actionT[state][cct];
+
+		//new function doAction(some parameters here, should know more after writing)
+
+		doAction(act, tkn, ch, state, reserve, outFile);
+
+		//set state after action based on state table. state = FSM[state][cct]
+		
+		state = FSM[state][cct];
+
+	}
+
 }
 
 
@@ -265,5 +408,7 @@ void main(){
 	printExplain(exp, outFile);
 	readProg(prog);
 	printProg(prog, outFile);
+
+	//scanner(actionT, FSM, reserve, outFile);
 
 }
