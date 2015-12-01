@@ -1,5 +1,5 @@
 10 rem
-12 input x1, y
+12 input x1,y
 13 if x1 < y then goto 15
 14 zee = x1 - y
 11 goto 16

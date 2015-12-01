@@ -222,9 +222,8 @@ void printStateTable(stateType FSM[lastState][lastCharType], ofstream &outFile){
 	stateType collumnTitle;
 	string stateOut;
 	
-	outFile << "State Table" << endl;
 
-	outFile << "Action Table" << endl << left << "\n" << "                ";
+	outFile << "State Table" << endl << left << "\n" << "                ";
 	for (int j = 0; j < lastCharType; j++){
 		outFile << left << setw(15) << charTypeToString((charType)j);
 	}
@@ -255,7 +254,7 @@ void printStateTable(stateType FSM[lastState][lastCharType], ofstream &outFile){
 }
 
 charType getCharType(char ch){
-	charType ans;
+	charType ans = illegal;
 	
 	if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))
 		ans = letter;
@@ -264,8 +263,8 @@ charType getCharType(char ch){
 	else if (ch == '.')
 		ans = period;
 	else if (ch == '"' || ch == ',' || ch == '+' || ch == '-' || ch == '/'
-		|| ch == '*' || ch == '>' || ch == '<' || ch == '#' || ch == '^'
-		|| ch == '=')
+		|| ch == '*' || ch == '>' || ch == '<' || ch == '(' || ch == '^'
+		|| ch == '=' || ch ==')' || ch == '&')
 		ans = delimiter;
 	else if (ch == ' ')
 		ans = blank;
@@ -279,111 +278,132 @@ charType getCharType(char ch){
 	return ans;
 }
 
+bool isReserved(string tkn, string reserve[]){
+	bool isReserved = false;
+	for (int i = 0; i < reserveSize; i++){
+		if (tkn == reserve[i])
+			isReserved = true;
+		else
+			isReserved = false;
+	}
+
+	return isReserved;
+}
+
 void doAction(int act, string &tkn, char ch, stateType &state, string reserve[], ofstream &outFile){
 	switch (act){
 	case 1:
 		tkn += ch;
+		break;
 	case 2:
-		for (int i = 0; i < reserveSize; i++){
-			if (tkn == reserve[i]){
-				state = resWrd;
-				outFile << tkn << setw(10) << stateToString(state) << endl;
-				tkn = "";
-			}
-			else{
-				state = var;
-				outFile << tkn << setw(10) << stateToString(state) << endl;
-				tkn = "";
-			}
-		}
+		if (isReserved(tkn, reserve))
+			state = resWrd;
+		
+		else
+			state = var;
+		
+		outFile << left << tkn  << " " << stateToString(state) << endl;
+		tkn = "";
+		break;
 	case 3:
-		outFile << tkn << endl;
+		outFile << left << tkn  << " " << stateToString(state) << endl;
 		tkn = "";
+		break;
 	case 4:
-		outFile << tkn << setw(10) << "Improper usage." << setw(10) << ch << endl;
+		outFile << left << tkn  << " " << stateToString(state) << endl;
+		outFile << "Improper usage." << endl;
+		outFile << ch << endl;
 		tkn = "";
+		break;
 	case 5:
-		outFile << "Improper usage." << setw(10) << ch << endl;
+		outFile << "Improper usage." << endl;
+		outFile << ch << endl;
+		break;
 	case 6:
-
+		break;
 	case 7:
-		outFile << "Illegal character." << setw(10) << ch << endl;
+		outFile << "Illegal character." << endl;
+		outFile << ch << endl;
+		break;
 	case 8:
-		for (int i = 0; i < reserveSize; i++){
-			if (tkn == reserve[i]){
-				state = resWrd;
-				outFile << tkn << setw(10) << stateToString(state) << endl;
-				tkn = "";
-				tkn += ch;
-			}
-			else{
-				state = var;
-				outFile << tkn << setw(10) << stateToString(state) << endl;
-				tkn = "";
-				tkn += ch;
-			}
-		}
-	case 9:
-		outFile << tkn << endl;
+		if (isReserved(tkn, reserve))
+			state = resWrd;
+		else
+			state = var;
+
+		outFile << left << tkn << " " << stateToString(state) << endl;
 		tkn = "";
 		tkn += ch;
+		break;
+	case 9:
+		outFile << left << tkn << " " << stateToString(state) << endl;
+		tkn = "";
+		tkn += ch;
+		break;
 	case 10:
 		tkn += ch;
 		state = var;
-		outFile << tkn << endl;
+		outFile << left << tkn << " " << stateToString(state) << endl;
 		tkn = "";
+		break;
 	case 11:
-		for (int i = 0; i < reserveSize; i++){
-			if (tkn == reserve[i]){
-				state = resWrd;
-				outFile << tkn << setw(10) << stateToString(state) << endl;
-				tkn = "";
-			}
-			else{
-				state = var;
-				outFile << tkn << setw(10) << stateToString(state) << endl;
-				tkn = "";
-			}
-		}
+		if (isReserved(tkn, reserve))
+			state = resWrd;
+		else
+			state = var;
+		outFile << left << tkn  << " " << stateToString(state) << endl;
+		outFile << "Illegal character." << endl;
+		outFile << ch << endl;
+		tkn = "";
+		break;
 	case 12:
 		tkn += ch;
-		outFile << tkn << endl;
+		outFile << left << tkn  << " " << stateToString(state) << endl;
 		tkn = "";
+		break;
 	case 13:
-		outFile << tkn << setw(10) << "Illegal character" << setw(10) << ch << endl;
+		outFile << left << tkn << " " << stateToString(state) << endl;
+		outFile << "Illegal character" << endl;
+		outFile << ch << endl;
 		tkn = "";
+		break;
 	}
 }
 
 void scanner(int actionT[lastState][lastCharType], stateType FSM[lastState][lastCharType], string reserve[], ofstream &outFile){
 	ifstream inFile("prog1.bas");
-	stateType state = newTkn;
+	stateType state;
 	charType cct;
-	string tkn;
+	string tkn, line;
 	char ch;
 	int act;
 	
 	while (!inFile.eof()){
 
-		//Read in for each char in a row - read ch
-		inFile >> ch;
+		//Read in line
+		getline(inFile, line);
+		state = newTkn;
+		tkn = "";
+		for (int i = 0; i < line.length(); i++){
+			// set ch equal to line[i]
+			ch = line[i];
 
-		// char charType (cct) new function getCharType(ch)
+			// char charType (cct) new function getCharType(ch)
 
-		cct = getCharType(ch);
+			cct = getCharType(ch);
 
-		//set action (act) based on state and cct act = actionT[state][cct]
+			//set action (act) based on state and cct act = actionT[state][cct]
 
-		act = actionT[state][cct];
+			act = actionT[state][cct];
 
-		//new function doAction(some parameters here, should know more after writing)
+			//new function doAction(some parameters here, should know more after writing)
 
-		doAction(act, tkn, ch, state, reserve, outFile);
+			doAction(act, tkn, ch, state, reserve, outFile);
 
-		//set state after action based on state table. state = FSM[state][cct]
-		
-		state = FSM[state][cct];
+			//set state after action based on state table. state = FSM[state][cct]
 
+			state = FSM[state][cct];
+		}
 	}
 
 }
@@ -409,6 +429,6 @@ void main(){
 	readProg(prog);
 	printProg(prog, outFile);
 
-	//scanner(actionT, FSM, reserve, outFile);
+	scanner(actionT, FSM, reserve, outFile);
 
 }
