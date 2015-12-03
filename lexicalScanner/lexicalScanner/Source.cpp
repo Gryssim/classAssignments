@@ -121,8 +121,12 @@ void bubSort(string a[]){
 
 void readReserveList(string reserve[]){
 	ifstream inFile("reserve.dat");
+	int i = 0;
 
-	for (int i = 0; i < reserveSize; i++) inFile >> reserve[i];
+	while (!inFile.eof()){
+		inFile >> reserve[i];
+		i++;
+	}
 
 	bubSort(reserve);
 
@@ -139,9 +143,13 @@ void printReserveList(string reserve[], ofstream &outFile){
 
 void readProg(string prog[]){
 	ifstream inFile("prog1.bas");
+	int i = 0;
 
-	for (int i = 0; i < progSize; i++) getline(inFile, prog[i]);
-
+	while (!inFile.eof()){
+		getline(inFile, prog[i]);
+		prog[i] += '|';
+		i++;
+	}
 }
 
 void printProg(string prog[], ofstream &outFile){
@@ -150,12 +158,17 @@ void printProg(string prog[], ofstream &outFile){
 	for (int i = 0; i < progSize; i++){
 		outFile << prog[i] << endl;
 	}
+	outFile << endl << endl;
 }
 
 void readExplain(string exp[]){
 	ifstream inFile("explain.dat");
+	int i = 0;
 
-	for (int i = 0; i < explainSize; i++) getline(inFile, exp[i]);
+	while (!inFile.eof()){
+		getline(inFile, exp[i]);
+		i++;
+	}
 }
 
 void printExplain(string exp[], ofstream &outFile){
@@ -186,10 +199,6 @@ void printActionTable(int actionT[lastState][lastCharType], ofstream &outFile){
 	}
 	outFile << endl;
 	
-	/*outFile << left << "\n" << "              " << setw(15) << "letter" << setw(15) << "digit" << 
-		setw(15) << "period" << setw(15) << "delimiter" << setw(15) <<  "blank"
-		<< setw(15) << "pod" << setw(15) << "eoln" << setw(15) <<"illegal"  << endl;
-		*/
 	for (int i = 0; i < 127; i++){
 		outFile << "=";
 	}
@@ -229,12 +238,7 @@ void printStateTable(stateType FSM[lastState][lastCharType], ofstream &outFile){
 	}
 
 	outFile << endl;
-	/*
-	outFile  << "\n       "  << setw(15) << "letter" << setw(15) << "digit" <<
-		setw(15) << "period" << setw(15) << "delimiter" << setw(15) << "blank"
-		<< setw(15) << "pod" << setw(15) << "eoln" << setw(15) << "illegal" << endl;
 
-		*/
 	for (int i = 0; i < 127; i++){
 		outFile << "=";
 	}
@@ -270,7 +274,7 @@ charType getCharType(char ch){
 		ans = blank;
 	else if (ch == '$' || ch == '%')
 		ans = pod;
-	else if (ch == '\n')
+	else if (ch == '|')
 		ans = eoln;
 	else
 		ans = illegal;
@@ -283,10 +287,7 @@ bool isReserved(string tkn, string reserve[]){
 	for (int i = 0; i < reserveSize; i++){
 		if (tkn == reserve[i])
 			isReserved = true;
-		else
-			isReserved = false;
 	}
-
 	return isReserved;
 }
 
@@ -370,18 +371,17 @@ void doAction(int act, string &tkn, char ch, stateType &state, string reserve[],
 	}
 }
 
-void scanner(int actionT[lastState][lastCharType], stateType FSM[lastState][lastCharType], string reserve[], ofstream &outFile){
-	ifstream inFile("prog1.bas");
+void scanner(int actionT[lastState][lastCharType], stateType FSM[lastState][lastCharType], string reserve[], string prog[], ofstream &outFile){
 	stateType state;
 	charType cct;
 	string tkn, line;
 	char ch;
 	int act;
-	
-	while (!inFile.eof()){
+	int j = 0;
 
-		//Read in line
-		getline(inFile, line);
+	while (j < progSize){
+
+		line = prog[j];
 		state = newTkn;
 		tkn = "";
 		for (int i = 0; i < line.length(); i++){
@@ -404,6 +404,7 @@ void scanner(int actionT[lastState][lastCharType], stateType FSM[lastState][last
 
 			state = FSM[state][cct];
 		}
+		j++;
 	}
 
 }
@@ -429,6 +430,6 @@ void main(){
 	readProg(prog);
 	printProg(prog, outFile);
 
-	scanner(actionT, FSM, reserve, outFile);
+	scanner(actionT, FSM, reserve, prog, outFile);
 
 }

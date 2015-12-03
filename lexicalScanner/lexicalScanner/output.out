@@ -54,42 +54,48 @@ Explanations of Action Table Entries
 13 Print Token, write "Illegal character", print characater, reinitialize token
 
 Program 1
-10 rem
-12 input x1,y
-13 if x1 < y then goto 15
-14 zee = x1 - y
-11 goto 16
-15 zee = x1 + 2 *y
-16 print x1, y, zee
-17 for i = 1 to 16 step 5
-18 print i
-19 next i
-20 input st%
-21 print "$", st%
-22 input x
-23 if y >= x1 then x = y^3
-24 print x1, #
-25 end
+10 rem|
+12 input x1,y|
+13 if x1 < y then goto 15|
+14 zee = x1 - y|
+11 goto 16|
+15 zee = x1 + 2 *y|
+16 print x1, y, zee|
+17 for i = 1 to 16 step 5|
+18 print i|
+19 next i|
+20 input st%|
+21 print "$", st%|
+22 input x|
+23 if y >= x1 then x = y^3|
+24 print x1, #|
+25 end|
+
 
 10 integer
+rem resWrd
 12 integer
-input var
+input resWrd
 x1 var
 , delim
+y var
 13 integer
-if var
+if resWrd
 x1 var
 < delim
 y var
-then var
-goto var
+then resWrd
+goto resWrd
+15 integer
 14 integer
 zee var
 = delim
 x1 var
 - delim
+y var
 11 integer
-goto var
+goto resWrd
+16 integer
 15 integer
 zee var
 = delim
@@ -97,50 +103,58 @@ x1 var
 + delim
 2 integer
 * delim
+y var
 16 integer
-print var
+print resWrd
 x1 var
 , delim
 y var
 , delim
+zee var
 17 integer
-for var
+for resWrd
 i var
 = delim
 1 integer
 to resWrd
 16 integer
-step var
+step resWrd
+5 integer
 18 integer
-print var
+print resWrd
+i var
 19 integer
-next var
+next resWrd
+i var
 20 integer
-input var
+input resWrd
 st% var
 21 integer
-print var
+print resWrd
 " delim
 Improper usage.
 $
 ", delim
 st% var
 22 integer
-input var
+input resWrd
+x var
 23 integer
-if var
+if resWrd
 y var
 >= delim
 x1 var
-then var
+then resWrd
 x var
 = delim
 y var
 ^ delim
+3 integer
 24 integer
-print var
+print resWrd
 x1 var
 , delim
 Illegal character.
 #
 25 integer
+end resWrd
