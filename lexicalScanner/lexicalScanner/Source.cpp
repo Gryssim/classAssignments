@@ -1,3 +1,9 @@
+/*
+Douglas Plock
+CSCI 112
+Lexical Scanner Final Project
+*/
+
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -303,15 +309,15 @@ void doAction(int act, string &tkn, char ch, stateType &state, string reserve[],
 		else
 			state = var;
 		
-		outFile << left << tkn  << " " << stateToString(state) << endl;
+		outFile << left << setw(10) << tkn << " " << stateToString(state) << endl;
 		tkn = "";
 		break;
 	case 3:
-		outFile << left << tkn  << " " << stateToString(state) << endl;
+		outFile << left << setw(10) << tkn << " " << stateToString(state) << endl;
 		tkn = "";
 		break;
 	case 4:
-		outFile << left << tkn  << " " << stateToString(state) << endl;
+		outFile << left << setw(10) << tkn << " " << stateToString(state) << endl;
 		outFile << "Improper usage." << endl;
 		outFile << ch << endl;
 		tkn = "";
@@ -332,19 +338,19 @@ void doAction(int act, string &tkn, char ch, stateType &state, string reserve[],
 		else
 			state = var;
 
-		outFile << left << tkn << " " << stateToString(state) << endl;
+		outFile << left << setw(10) << tkn << " " << stateToString(state) << endl;
 		tkn = "";
 		tkn += ch;
 		break;
 	case 9:
-		outFile << left << tkn << " " << stateToString(state) << endl;
+		outFile << left << setw(10) << tkn << " " << stateToString(state) << endl;
 		tkn = "";
 		tkn += ch;
 		break;
 	case 10:
 		tkn += ch;
 		state = var;
-		outFile << left << tkn << " " << stateToString(state) << endl;
+		outFile << left << setw(10) << tkn << " " << stateToString(state) << endl;
 		tkn = "";
 		break;
 	case 11:
@@ -352,23 +358,31 @@ void doAction(int act, string &tkn, char ch, stateType &state, string reserve[],
 			state = resWrd;
 		else
 			state = var;
-		outFile << left << tkn  << " " << stateToString(state) << endl;
+		outFile << left << setw(10) << tkn << " " << stateToString(state) << endl;
 		outFile << "Illegal character." << endl;
 		outFile << ch << endl;
 		tkn = "";
 		break;
 	case 12:
 		tkn += ch;
-		outFile << left << tkn  << " " << stateToString(state) << endl;
+		outFile << left << setw(10) << tkn << " " << stateToString(state) << endl;
 		tkn = "";
 		break;
 	case 13:
-		outFile << left << tkn << " " << stateToString(state) << endl;
+		outFile << left << setw(10) << tkn << " " << stateToString(state) << endl;
 		outFile << "Illegal character" << endl;
 		outFile << ch << endl;
 		tkn = "";
 		break;
 	}
+}
+
+void printTokenHead(ofstream &outFile){
+	outFile << left << setw(10) << "Token" << " " << "Token Type" << endl;
+	for (int i = 0; i < 22; i++){
+		outFile << "=";
+	}
+	outFile << endl;
 }
 
 void scanner(int actionT[lastState][lastCharType], stateType FSM[lastState][lastCharType], string reserve[], string prog[], ofstream &outFile){
@@ -378,6 +392,8 @@ void scanner(int actionT[lastState][lastCharType], stateType FSM[lastState][last
 	char ch;
 	int act;
 	int j = 0;
+
+	printTokenHead(outFile);
 
 	while (j < progSize){
 

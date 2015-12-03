@@ -42,7 +42,7 @@ Explanations of Action Table Entries
 1 Load character and continue
 2 Compare with table of reserved words, print token, reinitialize token
 3 Print token, reinitialize token
-4 Print token, write "Improper usage", print characater, reinitialize token
+4 Print token, write "Improper usage", print character, reinitialize token
 5 Write "Improper usage", print character
 6 Continue
 7 Write "Illegal character", print character
@@ -51,7 +51,7 @@ Explanations of Action Table Entries
 10 Load character, change state to variable, print token, reinitialize token
 11 Compare with table of reserved words, print token, write "Illegal character", print char
 12 Load character, print token, reinitialize token
-13 Print Token, write "Illegal character", print characater, reinitialize token
+13 Print Token, write "Illegal character", print character, reinitialize token
 
 Program 1
 10 rem|
@@ -72,89 +72,91 @@ Program 1
 25 end|
 
 
-10 integer
-rem resWrd
-12 integer
-input resWrd
-x1 var
-, delim
-y var
-13 integer
-if resWrd
-x1 var
-< delim
-y var
-then resWrd
-goto resWrd
-15 integer
-14 integer
-zee var
-= delim
-x1 var
-- delim
-y var
-11 integer
-goto resWrd
-16 integer
-15 integer
-zee var
-= delim
-x1 var
-+ delim
-2 integer
-* delim
-y var
-16 integer
-print resWrd
-x1 var
-, delim
-y var
-, delim
-zee var
-17 integer
-for resWrd
-i var
-= delim
-1 integer
-to resWrd
-16 integer
-step resWrd
-5 integer
-18 integer
-print resWrd
-i var
-19 integer
-next resWrd
-i var
-20 integer
-input resWrd
-st% var
-21 integer
-print resWrd
-" delim
+Token      Token Type
+======================
+10         integer
+rem        resWrd
+12         integer
+input      resWrd
+x1         var
+,          delim
+y          var
+13         integer
+if         resWrd
+x1         var
+<          delim
+y          var
+then       resWrd
+goto       resWrd
+15         integer
+14         integer
+zee        var
+=          delim
+x1         var
+-          delim
+y          var
+11         integer
+goto       resWrd
+16         integer
+15         integer
+zee        var
+=          delim
+x1         var
++          delim
+2          integer
+*          delim
+y          var
+16         integer
+print      resWrd
+x1         var
+,          delim
+y          var
+,          delim
+zee        var
+17         integer
+for        resWrd
+i          var
+=          delim
+1          integer
+to         resWrd
+16         integer
+step       resWrd
+5          integer
+18         integer
+print      resWrd
+i          var
+19         integer
+next       resWrd
+i          var
+20         integer
+input      resWrd
+st%        var
+21         integer
+print      resWrd
+"          delim
 Improper usage.
 $
-", delim
-st% var
-22 integer
-input resWrd
-x var
-23 integer
-if resWrd
-y var
->= delim
-x1 var
-then resWrd
-x var
-= delim
-y var
-^ delim
-3 integer
-24 integer
-print resWrd
-x1 var
-, delim
+",         delim
+st%        var
+22         integer
+input      resWrd
+x          var
+23         integer
+if         resWrd
+y          var
+>=         delim
+x1         var
+then       resWrd
+x          var
+=          delim
+y          var
+^          delim
+3          integer
+24         integer
+print      resWrd
+x1         var
+,          delim
 Illegal character.
 #
-25 integer
-end resWrd
+25         integer
+end        resWrd
