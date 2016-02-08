@@ -11,7 +11,7 @@ Random Number Generator
 
 using namespace std;
 
-const int MAX = 10000;
+const int MAX = 5000;
 const double BOUNDARY = 100000;
 
 
@@ -23,7 +23,8 @@ void main(){
 
 	while (i < MAX){
 		num = rand();
-		anum = pow (num, (1.0/3.0)) * pow(-1.0, i) * i - (num + 3.14159265358979);
+		anum = pow (num, (1.0/3.0))  * i - (num + 3.14159265358979);
+		anum *= pow(-1.0, i);
 
 		if (abs(anum) < BOUNDARY){
 			outFile << fixed << setprecision(3) <<  anum << endl;

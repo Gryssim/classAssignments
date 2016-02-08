@@ -1,0 +1,5 @@
+﻿  Source.cpp
+d:\my stuff\documents\school\visualstudioprojects\programming\sorttestcs3\sorttestcs3\source.cpp(67): warning C4390: ';': empty controlled statement found; is this the intent?
+d:\my stuff\documents\school\visualstudioprojects\programming\sorttestcs3\sorttestcs3\source.cpp(95): warning C4390: ';': empty controlled statement found; is this the intent?
+  SortTestCS3.vcxproj -> D:\My Stuff\Documents\School\VisualStudioProjects\Programming\SortTestCS3\Debug\SortTestCS3.exe
+  SortTestCS3.vcxproj -> D:\My Stuff\Documents\School\VisualStudioProjects\Programming\SortTestCS3\Debug\SortTestCS3.pdb (Partial PDB)

@@ -1,0 +1,34 @@
+breakfast
+Standard_and_Simple
+4 egg
+4 bacon
+-1
+
+lunch
+Juicy_Garlic_Chicken_Thighs_served_with_Broccoli_and_Cheese
+4 chicken__thigh
+0.334 garlic_bulb
+0.5 broccoli
+0.5 cheddar
+-1
+
+lunch
+Carne_Picada_with_Onions_and_Peppers_Served_with_Vegetables
+0.667 carne_picada_beef
+0.334 onion
+0.334 green_bell_pepper
+0.334 garlic_bulb
+0.334 frozen_vegetable
+0.25 butter
+0.1667 salsa
+-1
+
+dinner
+No_Shell_Tacos
+0.667 ground_beef
+0.334 taco_sauce
+1 sour_cream
+0.334 shredded_lettuce
+0.5 tomato
+0.5 onion
+-1

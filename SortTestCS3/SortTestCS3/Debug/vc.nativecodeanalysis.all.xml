@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?><DEFECTS><DEFECT>
+    <SFA>
+      <FILEPATH>d:\my stuff\documents\school\visualstudioprojects\programming\sorttestcs3\sorttestcs3\</FILEPATH>
+      <FILENAME>source.cpp</FILENAME>
+      <LINE>75</LINE>
+      <COLUMN>12</COLUMN>
+    </SFA>
+    <DEFECTCODE>6326</DEFECTCODE>
+    <DESCRIPTION>Potential comparison of a constant with another constant.</DESCRIPTION>
+    <FUNCTION>selectSortDoubles</FUNCTION>
+    <DECORATED>?selectSortDoubles@@YAXQAN@Z</DECORATED>
+    <FUNCLINE>72</FUNCLINE>
+    <PATH />
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>d:\my stuff\documents\school\visualstudioprojects\programming\sorttestcs3\sorttestcs3\</FILEPATH>
+      <FILENAME>source.cpp</FILENAME>
+      <LINE>189</LINE>
+      <COLUMN>9</COLUMN>
+    </SFA>
+    <DEFECTCODE>6262</DEFECTCODE>
+    <DESCRIPTION>Function uses '40264' bytes of stack:  exceeds /analyze:stacksize '16384'.  Consider moving some data to heap.</DESCRIPTION>
+    <FUNCTION>main</FUNCTION>
+    <DECORATED>main</DECORATED>
+    <FUNCLINE>189</FUNCLINE>
+    <PATH />
+  </DEFECT></DEFECTS>
