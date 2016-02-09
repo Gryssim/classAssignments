@@ -42,29 +42,34 @@ void readItStructs(testStruct a[]) {
 	}
 }
 
-template <class type>
-void swapIt(type &a, type &b) {
-	type temp;
+void swapItDouble(double &a, double &b) {
+	double temp;
 	temp = b;
 	b = a;
 	a = temp;
 	
 }
 
+void swapItStructs(testStruct &a, testStruct &b) {
+	testStruct temp;
+	temp = b;
+	b = a;
+	a = temp;
+}
+
 void bubbleSortDoubles(double a[]) {
 	for (int j = 0; j < maxNum - 1; j++) {
 		for (int i = 0; i < maxNum - j - 1; i++) {
-			if (a[i] > a[i + 1]) swapIt(a[i], a[i + 1]);
+			if (a[i] > a[i + 1]) swapItDouble(a[i], a[i + 1]);
 		}
 	}
 }
 
 void bubbleSortStructs(testStruct a[]) {
-	cout << "bubble";
 	for (int j = 0; j < maxNum - 1; j++) {
+		if (j % 50 == 0) cout << "[]";
 		for (int i = 0; i < maxNum - j - 1; i++) {
-			if (a[i].crn > a[i + 1].crn) //swapIt(a[i], a[i + 1]);;
-				;				
+			if (a[i].crn > a[i + 1].crn) swapItStructs(a[i], a[i + 1]);;				
 		}
 	}
 }
@@ -78,8 +83,7 @@ void selectSortDoubles(double a[]) {
 			for (j = k + 1; j <= maxNum - 1; j++) {
 				if (a[j] < a[small]) small = j;
 			}
-			if (k != small) swapIt(a[k], a[small]);
-				
+			if (k != small) swapItDouble(a[k], a[small]);
 		}
 	}
 }
@@ -87,19 +91,22 @@ void selectSortDoubles(double a[]) {
 void selectSortStructs(testStruct a[]) {
 	cout << "Select";
 	int j, k, small;
-	for (k = 0; k < maxNum - 2; k++) {
-		small = k;
-		for (j = k + 1; j < maxNum; j++) {
-			if (a[j].crn < a[small].crn) small = j;
-			if (k != small) //swapIt(a[k], a[small]);
-				;
+
+	if (maxNum > 1){
+		for (k = 0; k < maxNum - 2; k++) {
+			if (k % 50 == 0) cout << "{}";
+			small = k;
+			for (j = k + 1; j < maxNum; j++) {
+				if (a[j].crn < a[small].crn) small = j;
+			}
+			if (k != small) swapItStructs(a[k], a[small]);
 		}
 	}
 }
 
 void quickSortDoubles(int left, int right, double a[]) {
 	int j, k;
-
+	
 	if (left < right) {
 		j = left;
 		k = right + 1;
@@ -111,10 +118,10 @@ void quickSortDoubles(int left, int right, double a[]) {
 			do {
 				k--;
 			} while (k >= left && a[k] > a[left]);
-			if (j < k) swapIt(a[j], a[k]);
+			if (j < k) swapItDouble(a[j], a[k]);
 		} while (j < k);
 		
-		swapIt(a[left], a[k]);
+		swapItDouble(a[left], a[k]);
 
 		quickSortDoubles(left, k - 1, a);
 		quickSortDoubles(k + 1, right, a);
@@ -135,11 +142,10 @@ void quickSortStructs(int left, int right, testStruct a[]) {
 			do {
 				k--;
 			} while (k >= left && a[k].crn > a[left].crn);
-			if (j < k) swapIt(a[j], a[k]);
-				;
+			if (j < k) swapItStructs(a[j], a[k]);
 		} while (j < k);
 
-		swapIt(a[left], a[k]);
+		swapItStructs(a[left], a[k]);
 
 		quickSortStructs(left, k - 1, a);
 		quickSortStructs(k + 1, right, a);
@@ -188,6 +194,14 @@ void initItDouble(double a[]) {
 	}
 }
 
+void initItStructure(testStruct a[]) {
+	for (int i = 0; i < maxNum; i++) {
+		a[i].crn = 0;
+		a[i].numS = -1;
+		for (int j = 0; j < 50; j++) a[i].student[j] = "NA";
+	}
+}
+
 void main() {
 	int numSorts = 3;
 	int quickSortLeft = 0;
@@ -203,6 +217,7 @@ void main() {
 	time_t start, finish, timeDiff;
 
 	initItDouble(testDouble);
+	initItStructure(heavyStruct);
 
 	for (int i = 1; i <= numSorts; i++) {
 		start = clock();
