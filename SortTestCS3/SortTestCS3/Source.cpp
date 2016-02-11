@@ -19,8 +19,8 @@ struct testStruct
 	string student[50];
 };
 
-const int numToSeeDouble = 1;
-const int numToSeeStruct = 1;
+const int numToSeeDouble = 100;
+const int numToSeeStruct = 5;
 const int maxNum = 5001;
 
 void readItDoubles(double a[]) {
@@ -214,7 +214,7 @@ void main() {
 	outFile.setf(ios::fixed);
 	outFile.precision(3);
 
-	time_t start, finish, timeDiff;
+	time_t start, finish, timeDiff, timeAverage;
 
 	initItDouble(testDouble);
 	initItStructure(heavyStruct);
@@ -240,10 +240,11 @@ void main() {
 			
 			finish = clock();
 			timeDiff = finish - start;
+			timeAverage = timeDiff / numToSeeDouble;
 
 
 		}
-		printItDouble(outFile, testDouble, sortName, timeDiff);
+		printItDouble(outFile, testDouble, sortName, timeAverage);
 	}
 
 	for (int i = 1; i <= numSorts; i++) {
@@ -268,10 +269,10 @@ void main() {
 
 			finish = clock();
 			timeDiff = finish - start;
-
+			timeAverage = timeDiff / numToSeeStruct;
 			
 		}
-		printItStructs(outFile, heavyStruct, sortName, timeDiff);
+		printItStructs(outFile, heavyStruct, sortName, timeAverage);
 	}
 
 
