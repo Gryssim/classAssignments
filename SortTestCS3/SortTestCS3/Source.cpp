@@ -112,12 +112,8 @@ void quickSortDoubles(int left, int right, double a[]) {
 		k = right + 1;
 
 		do {
-			do {
-				j++;
-			} while (j <= k && a[j] < a[left]);
-			do {
-				k--;
-			} while (k >= left && a[k] > a[left]);
+			do { j++; } while (j <= k && a[j] < a[left]);
+			do { k--; } while (k >= left && a[k] > a[left]);
 			if (j < k) swapItDouble(a[j], a[k]);
 		} while (j < k);
 		

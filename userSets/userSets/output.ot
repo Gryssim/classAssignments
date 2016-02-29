@@ -1,0 +1,29 @@
+The Universal set includes:
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 
+
+The Vowel set includes:
+A       E       I           O           U           
+
+The Name set includes:
+A   C D E   G       K L     O P   R S   U           
+
+The Union (Vowel + Name) set includes:
+A   C D E   G   I   K L     O P   R S   U           
+
+The Intercept (Name U Vowel) set includes:
+A       E                   O           U           
+
+The Difference (Vowel \ Name) set includes:
+                I                                   
+
+The Difference (Name \ Vowel) set includes:
+    C D     G       K L       P   R S               
+
+The sets Universal and Name are not equal.
+
+The sets Name and Name are equal.
+
+Vowel is a subset of Universal
+
+Vowel is not a subset of Name
+
