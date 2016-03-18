@@ -155,39 +155,45 @@ void printTitles(ofstream &outFile) {
 	outFile << endl;
 }
 
+// Returns true if list is empty (Either of head's link point to tail.)
+
+bool emptyList(doubly *head, doubly *tail) {
+
+	return head->linkId == tail;
+}
+
 void travAlpha(doubly *head, doubly *tail, ofstream &outFile) {
 	doubly *c;
+	if (!emptyList(head, tail)) {
+		printTitles(outFile);
 
-	printTitles(outFile);
-
-	c = head->linkName;
-	while (c != tail) {
-		outFile << setw(10) << left << c->lastName << setw(10) << c->firstName << setw(6) << c->id << endl;
-		c = c->linkName;
+		c = head->linkName;
+		while (c != tail) {
+			outFile << setw(10) << left << c->lastName << setw(10) << c->firstName << setw(6) << c->id << endl;
+			c = c->linkName;
+		}
+		outFile << endl << endl;
 	}
-	outFile << endl << endl;
+	else
+		outFile << "This list is empty." << endl << endl;
 }
 
 void travNum(doubly *head, doubly *tail, ofstream &outFile) {
 	doubly *c;
 
-	printTitles(outFile);
+	if (!emptyList(head, tail)) {
+		printTitles(outFile);
 
-	c = head->linkId;
-	while (c != tail) {
-		outFile << setw(10) << left << c->lastName << setw(10) << c->firstName << setw(6) << c->id << endl;
-		c = c->linkId;
+		c = head->linkId;
+		while (c != tail) {
+			outFile << setw(10) << left << c->lastName << setw(10) << c->firstName << setw(6) << c->id << endl;
+			c = c->linkId;
+		}
+		outFile << endl << endl;
 	}
-	outFile << endl << endl;
+	else
+		outFile << "This list is empty." << endl << endl;
 }
-
-// Returns true if list is empty (Either of head's link point to tail.)
-
-bool emptyList(doubly *head, doubly *tail) {
-	
-	return (head->linkName == tail);
-}
-
 
 void main() {
 	doubly *head, *tail;
