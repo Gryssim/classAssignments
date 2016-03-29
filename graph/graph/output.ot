@@ -1,0 +1,42 @@
+       A    B    C    D    E    F    G    H    I    J    K
+===========================================================
+A |    X    0    0    0    0    0    0    0    0    0    0
+B |    0    X    0    0    0    0    0    0    0    0    0
+C |    0    0    X    0    0    0    0    0    0    0    0
+D |    0    0    0    X    0    0    0    0    0    0    0
+E |    0    0    0    0    X    0    0    0    0    0    0
+F |    0    0    0    0    0    X    0    0    0    0    0
+G |    0    0    0    0    0    0    X    0    0    0    0
+H |    0    0    0    0    0    0    0    X    0    0    0
+I |    0    0    0    0    0    0    0    0    X    0    0
+J |    0    0    0    0    0    0    0    0    0    X    0
+K |    0    0    0    0    0    0    0    0    0    0    X
+
+
+       A    B    C    D    E    F    G    H    I    J    K
+===========================================================
+A |    X    1    0    1    0    0    0    0    0    0    0
+B |    0    X    1    0    0    0    0    0    0    0    0
+C |    0    0    X    0    1    1    0    0    0    0    0
+D |    0    1    1    X    0    0    0    0    0    0    0
+E |    1    0    0    0    X    1    1    0    1    0    0
+F |    0    0    0    0    0    X    0    0    0    1    0
+G |    0    0    0    0    0    0    X    1    1    0    0
+H |    1    0    0    0    1    0    0    X    0    0    0
+I |    0    0    0    0    0    0    0    0    X    1    0
+J |    0    0    0    0    0    0    0    0    0    X    1
+K |    0    0    0    0    0    0    0    0    1    0    X
+
+
+Breadth First Search starting from A:
+A B D C E F J K I 
+
+Depth First Search starting from A:
+A B C E F J K I G H D 
+
+Breadth First Search starting from F:
+F J K I 
+
+Depth First Search starting from G:
+G H A B C E F J K I D 
+
