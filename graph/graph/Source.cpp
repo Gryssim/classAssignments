@@ -45,32 +45,36 @@ color stringToColor(string str) {
 	return ans;
 }
 
-void createQueue(queue *&head, queue *&tail, queue *&qlast) {
+void createQueue(queue *&head, queue *&tail) {
 	head = new queue;
 	tail = new queue;
 	
 	head->link = tail;
 	tail->link = NULL;
-
-	qlast = head;
 }
 
 bool emptyQueue(queue *head, queue *tail) {
 	return head->link == tail;
 }
 
-void enQueue(queue *head, queue *tail, queue *qlast, char ch) {
-	queue *knew;
-	knew = new queue;
+void enQueue(queue *head, queue *tail, char ch) {
+	queue *knew, *prior, *next;
+	knew = new queue;	
 
+	prior = head;
+	next = prior->link;
 	knew->data = ch;
-	
-	knew->link = tail;
-	qlast->link = knew;
-	qlast = knew;
+
+	while (next != tail) {
+		prior = prior->link;
+		next = next->link;
+	}
+		
+	knew->link = next;
+	prior->link = knew;
 }
 
-char deQueue(queue *head, queue *tail, queue *qlast) {
+char deQueue(queue *head, queue *tail) {
 	char ans;
 	queue *c;
 	c = new queue;
@@ -79,7 +83,6 @@ char deQueue(queue *head, queue *tail, queue *qlast) {
 		c = head->link;
 		ans = c->data;
 		head->link = c->link;
-		if (c == qlast) qlast = head;
 		delete c;
 	}
 	else
@@ -151,7 +154,7 @@ char queueTop(queue *head, queue *tail) {
 	return ans;
 }
 
-void bfSearch(char adjArray[][matrixSize], color colorArray[], char start, queue *head, queue *tail, queue *qlast, ofstream &outFile) {
+void bfSearch(char adjArray[][matrixSize], color colorArray[], char start, queue *head, queue *tail, ofstream &outFile) {
 	initVectColors(colorArray);
 	char vect;
 	string searchType = "Breadth First Search";
@@ -161,18 +164,14 @@ void bfSearch(char adjArray[][matrixSize], color colorArray[], char start, queue
 
 	outFile << left << start << " ";
 
-	enQueue(head, tail, qlast, start);
+	enQueue(head, tail, start);
 	while (!emptyQueue(head, tail)) {
-		vect = deQueue(head, tail, qlast);
+		vect = deQueue(head, tail);
 		for (int i = 'A'; i < matrixSize; i++){
-			//cout << "Adj Matrix[" << vect << "][" << (char)i << "]: " << adjArray[vect][i] << endl;
-			//cout << colorToString(colorArray[i]) << endl;
-			//cout << queueTop(head, tail) << endl;
-			//system("pause");
 			if ((adjArray[vect][i] != '0') && (i != vect) && (colorArray[i] == white)) {
 				colorArray[i] = gray;
 				outFile << char(i) << " ";
-				enQueue(head, tail, qlast, char(i));
+				enQueue(head, tail, char(i));
 			}
 			colorArray[vect] = black;
 		}
@@ -207,12 +206,12 @@ void dfSearch(char adjArray[][matrixSize], color colorArray[], char vert, ofstre
 
 
 void main() {
-	queue *head, *tail, *qlast;
+	queue *head, *tail;
 	ofstream outFile("output.ot");
 	color colorArray[matrixSize];
 	char adjArray[matrixSize][matrixSize];
 
-	createQueue(head, tail, qlast);
+	createQueue(head, tail);
 
 	initAdjArray(adjArray);
 	printArray(adjArray, outFile);
@@ -220,13 +219,13 @@ void main() {
 	printArray(adjArray, outFile);
 
 	//BF Search starting from A.
-	bfSearch(adjArray, colorArray, 'A', head, tail, qlast, outFile);
+	bfSearch(adjArray, colorArray, 'A', head, tail, outFile);
 
 	//DF Search starting from A.
 	dfSearch(adjArray, colorArray, 'A', outFile);
 
 	//BF Search starting from F.
-	bfSearch(adjArray, colorArray, 'F', head, tail, qlast, outFile);
+	bfSearch(adjArray, colorArray, 'F', head, tail, outFile);
 
 	//DF Search starting at G.
 	dfSearch(adjArray, colorArray, 'G', outFile);
