@@ -106,8 +106,9 @@ void initColorArray(colors color[]) {
 	for (int i = 'A'; i < matrixSize; i++) color[i] = white;
 }
 
-void deleteFromQ(queue *head, queue *tail, edge target) {
+bool checkQueue(queue *head, queue *tail, edge target) {
 	queue *prior, *c;
+	bool isQueueable = false;
 	
 	prior = head;
 	c = head->link;
@@ -116,11 +117,39 @@ void deleteFromQ(queue *head, queue *tail, edge target) {
 		prior = c;
 		c = c->link;
 	}
-	if (target.weight < c->weight) {
-		prior->link = c->link;
-		delete c;
+	if (target.vDest == c->vDest){
+		if (target.weight < c->weight) {
+			prior->link = c->link;
+			delete c;
+			isQueueable = true;
+		}
+	}
+	return isQueueable;
+}
+
+void printColors(queue *head, queue *tail, colors color[], ofstream &outFile) {
+	if (!emptyQ(head, tail)) {
+		for (int i = 'A'; i < matrixSize; i++)
+			outFile << (char)i << " ";
+		outFile << endl;
+		for (int i = 'A'; i < matrixSize; i++) {
+			colors currentColor = color[i];
+			switch (currentColor) {
+			case white:
+				outFile << 'W' << " ";
+				break;
+			case gray:
+				outFile << 'G' << " ";
+				break;
+			case black:
+				outFile << 'B' << " ";
+				break;
+			}
+		}
+		outFile << endl << endl;
 	}
 }
+
 
 void prims(queue *head, queue *tail, char adjArray[][matrixSize], colors color[], ofstream &outFile, char start) {
 	edge edgeList[matrixSize - 66];
@@ -137,9 +166,8 @@ void prims(queue *head, queue *tail, char adjArray[][matrixSize], colors color[]
 	while (!emptyQ(head, tail)) {
 		//DeQ
 		edge e = deQ(head, tail);
-		//cout << e.vDest << "<=" << e.vSource << endl;
-		//system("pause");
-		if (k < (matrixSize - 66) && e.vSource != 'X' && color[e.vDest] != black){
+		color[e.vDest] = black;
+		if (k < (matrixSize - 66) && e.vSource != 'X'){
 			edgeList[k] = e;
 			k++;
 		}
@@ -147,19 +175,22 @@ void prims(queue *head, queue *tail, char adjArray[][matrixSize], colors color[]
 		for (int i = 'A'; i < matrixSize; i++){
 			if ((color[i] != black) && (adjArray[e.vDest][i] != '0') && (i != e.vDest)) {
 				//EnQ valid edges
-				//edge checkE;
-				//checkE.vSource = e.vDest;
-				//checkE.vDest = (char)i;
-				//checkE.weight = adjArray[e.vDest][i];
-				//if (color[checkE.vDest] == gray)
-				//	deleteFromQ(head, tail, checkE);
-				enQ(head, tail, e.vDest, (char)i, adjArray[e.vDest][i]);
+				edge checkE;
+				checkE.vSource = e.vDest;
+				checkE.vDest = (char)i;
+				checkE.weight = adjArray[e.vDest][i];
+				if (color[checkE.vDest] == gray) {
+					if (checkQueue(head, tail, checkE))
+						enQ(head, tail, e.vDest, (char)i, adjArray[e.vDest][i]);
+				}
+				else if (color[checkE.vDest] == white)
+					enQ(head, tail, e.vDest, (char)i, adjArray[e.vDest][i]);
 				//update colors
 				color[i] = gray;
 			}
-			color[e.vDest] = black;
 		}
 		traverseQ(head, tail, outFile, step);
+		printColors(head, tail, color, outFile);
 		step++;
 	}//end loop
 

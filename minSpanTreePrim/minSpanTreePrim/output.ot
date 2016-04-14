@@ -40,6 +40,9 @@ G <= A : 6
 ----------
 
 
+A B C D E F G H I J K L M 
+B G W W W G G W W W W W W 
+
 Step: 2
 ----------
 C <= B : 1
@@ -50,268 +53,118 @@ G <= A : 6
 ----------
 
 
+A B C D E F G H I J K L M 
+B B G G G G G W W W W W W 
+
 Step: 3
 ----------
 F <= A : 2
 D <= B : 2
 E <= B : 4
-E <= C : 4
 G <= A : 6
 ----------
 
+
+A B C D E F G H I J K L M 
+B B B G G G G W W W W W W 
 
 Step: 4
 ----------
 D <= F : 1
-D <= B : 2
 E <= F : 2
 L <= F : 2
-E <= B : 4
-E <= C : 4
 G <= A : 6
 ----------
 
+
+A B C D E F G H I J K L M 
+B B B G G B G W W W W G W 
 
 Step: 5
 ----------
-D <= B : 2
 E <= F : 2
 L <= F : 2
-E <= D : 2
-E <= B : 4
-E <= C : 4
 G <= A : 6
 ----------
 
+
+A B C D E F G H I J K L M 
+B B B B G B G W W W W G W 
 
 Step: 6
 ----------
-E <= F : 2
+G <= E : 1
 L <= F : 2
-E <= D : 2
-E <= D : 2
-E <= B : 4
-E <= C : 4
-G <= A : 6
 ----------
 
+
+A B C D E F G H I J K L M 
+B B B B B B G W W W W G W 
 
 Step: 7
 ----------
-G <= E : 1
+J <= G : 1
 L <= F : 2
-E <= D : 2
-E <= D : 2
-E <= B : 4
-E <= C : 4
-L <= E : 4
-G <= A : 6
+H <= G : 3
 ----------
 
+
+A B C D E F G H I J K L M 
+B B B B B B B G W G W G W 
 
 Step: 8
 ----------
-J <= G : 1
+K <= J : 1
 L <= F : 2
-E <= D : 2
-E <= D : 2
+M <= J : 2
 H <= G : 3
-E <= B : 4
-E <= C : 4
-L <= E : 4
-L <= G : 5
-G <= A : 6
 ----------
 
+
+A B C D E F G H I J K L M 
+B B B B B B B G W B G G G 
 
 Step: 9
 ----------
-K <= J : 1
+I <= K : 1
 L <= F : 2
-E <= D : 2
-E <= D : 2
 M <= J : 2
 H <= G : 3
-L <= J : 3
-E <= B : 4
-E <= C : 4
-L <= E : 4
-L <= G : 5
-G <= A : 6
 ----------
 
+
+A B C D E F G H I J K L M 
+B B B B B B B G G B B G G 
 
 Step: 10
 ----------
-I <= K : 1
 L <= F : 2
-E <= D : 2
-E <= D : 2
 M <= J : 2
-H <= G : 3
-L <= J : 3
-E <= B : 4
-E <= C : 4
-L <= E : 4
-L <= G : 5
-G <= A : 6
+H <= I : 2
 ----------
 
+
+A B C D E F G H I J K L M 
+B B B B B B B G B B B G G 
 
 Step: 11
 ----------
-L <= F : 2
-E <= D : 2
-E <= D : 2
-M <= J : 2
+M <= L : 1
 H <= I : 2
-H <= G : 3
-L <= J : 3
-E <= B : 4
-E <= C : 4
-L <= E : 4
-L <= G : 5
-G <= A : 6
 ----------
 
+
+A B C D E F G H I J K L M 
+B B B B B B B G B B B B G 
 
 Step: 12
 ----------
-M <= L : 1
-E <= D : 2
-E <= D : 2
-M <= J : 2
 H <= I : 2
-H <= G : 3
-L <= J : 3
-E <= B : 4
-E <= C : 4
-L <= E : 4
-L <= G : 5
-G <= A : 6
 ----------
 
 
-Step: 13
-----------
-E <= D : 2
-E <= D : 2
-M <= J : 2
-H <= I : 2
-H <= G : 3
-L <= J : 3
-E <= B : 4
-E <= C : 4
-L <= E : 4
-L <= G : 5
-G <= A : 6
-----------
-
-
-Step: 14
-----------
-E <= D : 2
-M <= J : 2
-H <= I : 2
-H <= G : 3
-L <= J : 3
-E <= B : 4
-E <= C : 4
-L <= E : 4
-L <= G : 5
-G <= A : 6
-----------
-
-
-Step: 15
-----------
-M <= J : 2
-H <= I : 2
-H <= G : 3
-L <= J : 3
-E <= B : 4
-E <= C : 4
-L <= E : 4
-L <= G : 5
-G <= A : 6
-----------
-
-
-Step: 16
-----------
-H <= I : 2
-H <= G : 3
-L <= J : 3
-E <= B : 4
-E <= C : 4
-L <= E : 4
-L <= G : 5
-G <= A : 6
-----------
-
-
-Step: 17
-----------
-H <= G : 3
-L <= J : 3
-E <= B : 4
-E <= C : 4
-L <= E : 4
-L <= G : 5
-G <= A : 6
-----------
-
-
-Step: 18
-----------
-L <= J : 3
-E <= B : 4
-E <= C : 4
-L <= E : 4
-L <= G : 5
-G <= A : 6
-----------
-
-
-Step: 19
-----------
-E <= B : 4
-E <= C : 4
-L <= E : 4
-L <= G : 5
-G <= A : 6
-----------
-
-
-Step: 20
-----------
-E <= C : 4
-L <= E : 4
-L <= G : 5
-G <= A : 6
-----------
-
-
-Step: 21
-----------
-L <= E : 4
-L <= G : 5
-G <= A : 6
-----------
-
-
-Step: 22
-----------
-L <= G : 5
-G <= A : 6
-----------
-
-
-Step: 23
-----------
-G <= A : 6
-----------
-
+A B C D E F G H I J K L M 
+B B B B B B B G B B B B B 
 
 
 
